@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cursor</title>
+
+    <style>
+      body {
+        cursor: none;
+        height: 100vh;
+      }
+      #cursor {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        display: inline-block;
+        background-color: green;
+        border-radius: 50%;
+        animation-name: animate-cursor;
+        animation-duration: 3s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        border: 1px solid black;
+      }
+
+      @keyframes animate-cursor {
+        0% {
+          background-color: rgb(185, 238, 70);
+          opacity: 0.5;
+        }
+        50% {
+          background-color: rgb(209, 11, 110);
+        }
+        100% {
+          background-color: rgb(194, 216, 98);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body onmousemove="fun(event)" style="position: relative">
+    <script>
+      let e = document.createElement("span");
+      e.setAttribute("id", "cursor");
+
+      function fun(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+
+        e.setAttribute(
+          "style",
+          `top:${y + "px"};left:${x + "px"};position:absolute`
+        );
+
+        document.body.appendChild(e);
+      }
+    </script>
+  </body>
+</html>
